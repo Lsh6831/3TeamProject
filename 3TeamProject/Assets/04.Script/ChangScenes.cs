@@ -11,15 +11,11 @@ public class ChangScenes : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "Bt0":
-                SceneManager.LoadScene("Scin0");
+                SceneManager.LoadScene("0.Start");
                 Debug.Log ("Click0");
                 break;
-            case "Bt1":
-                SceneManager.LoadScene("Scin1");
-                Debug.Log("Click1");
-                break;
             case "Bt2":
-                SceneManager.LoadScene("Scin2");
+                SceneManager.LoadScene("1.Title");
                 Debug.Log("Click2");
                 break;
             case "Bt3":

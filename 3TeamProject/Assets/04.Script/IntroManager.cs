@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject panel;
+    public void IntroDuceBtn()
     {
-        
+        //switch (this.gameObject.name)
+        //{
+        //    case"Pl1";
+                panel.SetActive(true);
+        //}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
+    
