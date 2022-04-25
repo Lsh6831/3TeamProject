@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 [System.Serializable]
 public class Dialogue
 {
     [TextArea]
     //택스트 여러줄로 쓸수 있게 해줌
-    public string dialogue;
+    public string dialog;
     public Sprite cg;
-    public GameObject gameObject;
+    
+    //public GameObject gameObject;
     //public Image img;
 }
 public class TalkManager : MonoBehaviour
@@ -18,22 +20,35 @@ public class TalkManager : MonoBehaviour
     public enum TalkTarget { A, B }
     public TalkTarget target = TalkTarget.A;
 
-    public Image talkA;
-    public Image talkB;
+    //public Image talkA;
+    //public Image talkB;
 
     [SerializeField] private SpriteRenderer spritrCG;
     [SerializeField] private Image image;
     [SerializeField] private SpriteRenderer spriteTXt;
     [SerializeField] private Text textbox;
+    [SerializeField] float textDelay; // 텍스트 딜레이
 
     private bool isDialogue = false;
     //대화가 진행중인지 검사
 
     private int count = 0;
     //대화가 얼마나 진행 되었는지
+    public GameObject choose;
+    public GameObject Ending;
 
     [SerializeField] private Dialogue[] dialogue;
 
+    public int changCount1 = 7;
+    public int changCount2 = 0;
+
+    public int endCount1 = 5;
+
+
+    private void Start()
+    {
+        StartCoroutine(_typing());
+    }
     public void ShowDialogue()
     {
         OnOff(true);
@@ -48,7 +63,7 @@ public class TalkManager : MonoBehaviour
         image.gameObject.SetActive(_flag);
         isDialogue = _flag;
     }
-      private void NextDialogue()
+      public void NextDialogue()
     {
         //switch (target)
         //{
@@ -61,17 +76,49 @@ public class TalkManager : MonoBehaviour
         //        talkB.a = 1f;
         //        break;
         //}
-        textbox.text = dialogue[count].dialogue;
-        image.sprite = dialogue[count].cg;
+        textbox.text = dialogue[count].dialog;
+        spritrCG.sprite = dialogue[count].cg;
         //spritrCG.sprite = dialogue[count].cg;
         //target = target == TalkTarget.A ? TalkTarget.B : TalkTarget.B;
         count++;
+    }   
+IEnumerator _typing()
+    {
+        
+
+        for (int i = 0; i <= dialogue.Length; i++)
+        {
+            textbox.text += dialogue[i];
+            yield return new WaitForSeconds(textDelay);
+        }
+        
+
+        //yield return new WaitForSeconds(0f);
+        //for(int i = 0; i <= dialogue.Length; i++)
+        //{
+        //    //textbox.text = dialogue.Substring(0, i);
+        //    yield return new WaitForSeconds(textDelay);
+
+        //}
+
+
     }
     private void Update()
     {
+        if (count == 4)
+        {
+            Debug.Log("나옴");
+            choose.SetActive(true);
+            isDialogue = false;
+        }
+        if(count == endCount1)
+        {
+            Debug.Log("End");
+            count = 8;
+        }
         if (isDialogue)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (count < dialogue.Length)
                     NextDialogue();
@@ -79,6 +126,26 @@ public class TalkManager : MonoBehaviour
                     OnOff(false);
             }
         }
+    }
+
+    public void End()
+    {
+        Ending.SetActive(true);
+    }
+    public void BttonCount(int newCount)
+    {
+        isDialogue = true;
+        if (newCount == 5)
+        {
+            count = newCount + 10;
+            
+        }
+        if (newCount <= changCount1)
+        {
+            count = newCount;
+            
+        }
+
     }
 }
    
