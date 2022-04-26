@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 //씬 이동 하려면 씬 메니저가 필요
 public class ChangScenes : MonoBehaviour
 {
+    public string scenesName;
     public void ChangSceneBtn() 
     {
         //씬 이동 메서드 버튼 클릭시 해당 씬으로 이동
         switch (this.gameObject.name)
         {
-            case "Bt0":
-                SceneManager.LoadScene("0.Start");
+            case "Bt1":
+                SceneManager.LoadScene(scenesName);
                 Debug.Log ("Click0");
                 break;
             case "Bt2":
-                SceneManager.LoadScene("1.Title");
+                SceneManager.LoadScene(scenesName);
                 Debug.Log("Click2");
                 break;
             case "Bt3":

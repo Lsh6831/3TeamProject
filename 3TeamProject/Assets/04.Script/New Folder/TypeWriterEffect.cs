@@ -13,17 +13,21 @@ public class TypeWriterEffect : MonoBehaviour
     public string[] fulltext;
     public int dialog_cnt;
     string currentText;
-    public GameObject[] images;
+    
 
     //타이핑확인 변수
     public bool text_exit;
     public bool text_full;
     public bool text_cut;
 
+    public GameObject panal;
+    public AudioSource sound;
+
 
     //시작과 동시에 타이핑시작
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         Get_Typing(dialog_cnt,fulltext);
     }
 
@@ -35,7 +39,19 @@ public class TypeWriterEffect : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            text_cut = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            End_Typing();
+        }
+        if (cnt == 5)
+        {
+            panal.SetActive(false);
+        }
+
     }
 
     //다음버튼함수
@@ -48,6 +64,7 @@ public class TypeWriterEffect : MonoBehaviour
             text_full = false;
             text_cut = false;
             StartCoroutine(ShowText(fulltext));
+            sound.Play();
         }
         //텍스트 타이핑 생략
         else

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 [System.Serializable]
-public class Dialogue
+public class Dialogues
 {
     [TextArea]
     //택스트 여러줄로 쓸수 있게 해줌
@@ -37,7 +37,7 @@ public class TalkManager : MonoBehaviour
     public GameObject choose;
     public GameObject Ending;
 
-    [SerializeField] private Dialogue[] dialogue;
+    [SerializeField] private Dialogues[] dialogue;
 
     public int changCount1 = 7;
     public int changCount2 = 0;
@@ -47,7 +47,7 @@ public class TalkManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(_typing());
+        //StartCoroutine(_typing());
     }
     public void ShowDialogue()
     {
