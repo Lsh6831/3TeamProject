@@ -19,9 +19,9 @@ public class ChangScenes : MonoBehaviour
                 SceneManager.LoadScene(scenesName);
                 Debug.Log("Click2");
                 break;
-            case "Bt3":
-                SceneManager.LoadScene("Scin3");
-                Debug.Log("Click3");
+            case "End":
+                SceneManager.LoadScene(scenesName);
+                Debug.Log("End");
                 break;
 
 

@@ -11,24 +11,24 @@ public class Cho1 : MonoBehaviour
     public GameObject button;
 
 
-    public void Button1()
-    {
-       GameObject.Find("Canvas").GetComponent<TalkManager>().BttonCount(5);
-        GameObject.Find("Canvas").GetComponent<TalkManager>().NextDialogue();
-        button.SetActive(false);
-      
-    }
-    public void Button2()
-    {
-        GameObject.Find("Canvas").GetComponent<TalkManager>().BttonCount(buttonCount2);
-        GameObject.Find("Canvas").GetComponent<TalkManager>().NextDialogue();
-        button.SetActive(false);
-    }
-    public void Button3()
-    {
-        GameObject.Find("Canvas").GetComponent<TalkManager>().End();
-        
-    }
+    //    public void Button1()
+    //    {
+    //       GameObject.Find("Canvas").GetComponent<ImageManager>().BttonCount(5);
+    //        GameObject.Find("Canvas").GetComponent<ImageManager>().NextDialogue();
+    //        button.SetActive(false);
+
+    //    }
+    //    public void Button2()
+    //    {
+    //        GameObject.Find("Canvas").GetComponent<ImageManager>().BttonCount(buttonCount2);
+    //        GameObject.Find("Canvas").GetComponent<ImageManager>().NextDialogue();
+    //        button.SetActive(false);
+    //    }
+    //    public void Button3()
+    //    {
+    //        GameObject.Find("Canvas").GetComponent<ImageManager>().End();
+
+    //    }
 
 
 }
