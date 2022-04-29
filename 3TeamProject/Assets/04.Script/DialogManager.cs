@@ -54,7 +54,7 @@ public class DialogManager : MonoBehaviour
         {
             End_Typing();
         }
-        if (cnt == 5)
+        if (cnt == 4)
         {
             panal.SetActive(false);
         }

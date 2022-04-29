@@ -89,6 +89,7 @@ public class Scene1 : MonoBehaviour
            (GameObject.Find("Text").GetComponent<DialogManager>().cnt == 22)
         {
             button2.SetActive(true);
+            GameObject.Find("Text").GetComponent<DialogManager>().isDialogue = false;
 
         }
     }

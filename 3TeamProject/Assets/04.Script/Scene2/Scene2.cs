@@ -116,7 +116,7 @@ public class Scene2 : MonoBehaviour
            (GameObject.Find("Text").GetComponent<DialogManager>().cnt == 32)
         {
             system3.SetActive(true);
-
+            GameObject.Find("Text").GetComponent<DialogManager>().isDialogue = false;
         }
     }
 
